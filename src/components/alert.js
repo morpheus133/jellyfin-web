@@ -4,10 +4,10 @@ import dialog from './dialog/dialog';
 import globalize from '../lib/globalize';
 
 export default async function (text, title) {
-    // Modals seem to be blocked on Web OS and Tizen 2.x
+    // Modals seem to be blocked on Web OS and Tizen 2.x and Tizen 8.x
     const canUseNativeAlert = !!(
         !browser.web0s
-        && !(browser.tizenVersion && browser.tizenVersion < 3)
+        && !(browser.tizenVersion && (browser.tizenVersion < 3 || browser.tizenVersion > 7))
         && browser.tv
         && window.alert
     );
